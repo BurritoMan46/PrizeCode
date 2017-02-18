@@ -4,12 +4,12 @@ version: 0.1.0
 api:
 - 3.0.0-ALPHA3
 main: jasonwynn10\Main
-description: ""
+description: "A prize plugin"
 commands:
   code:
     usage: "/code [reset]"
     permission: code
-    description: ""
+    description: "main command"
 permissions:
   code:
     default: true
