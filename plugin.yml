@@ -7,7 +7,7 @@ main: jasonwynn10\Main
 description: "A prize plugin"
 commands:
   code:
-    usage: "/code [reset]"
+    usage: "/code <code>"
     permission: code
     description: "main command"
 permissions:

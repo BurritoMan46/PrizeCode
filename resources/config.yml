@@ -1,4 +1,7 @@
-#
-prizes:
-  - '274:0:2'
-  - ''
+# The code to be entered
+# NOTE: this is CaSe Sensitive
+CodeName: "Name"
+# The list of items the player will be given
+# The setup is item:metadata:count:name
+Prizes:
+  - '276:0:2:Sword of Awesomeness'
