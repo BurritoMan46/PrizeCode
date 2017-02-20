@@ -18,20 +18,17 @@ class Main extends PluginBase {
     public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
         if(strtolower($command) == "code") {
             if($sender instanceof Player) {
-                if(isset($args)) {
-                    if($args[0] == $this->getConfig()->get("CodeName","name")) {
+                if(count($args) >= 1) {
+                    if($args[0] == $this->getConfig()->get("CodeName","Name")) {
                         foreach ($this->getConfig()->get("Prizes",[]) as $item) {
-                            $arr = explode(":",$item);
-                            if(count($arr) == 4) {
-                                $i = Item::get($arr[0],$arr[1],$arr[2]);
-                                $i->setNamedTag(new CompoundTag("",[
-                                    new StringTag("name",$arr[3])
-                                ]));
-                            }elseif(count($arr) <= 2){
+                            $arr = explode(":", $item);
+                            if(count($arr) <= 2){
                                 $this->getLogger()->debug("Invalid item in plugin config");
                                 continue;
-                            }else{
-                                $i = Item::get($arr[0],$arr[1],$arr[2]);
+                            }
+                            $i = Item::get($arr[0],$arr[1],$arr[2]);
+                            if(count($arr) >= 4) {
+                                $i->setCustomName($arr[3]);
                             }
                             $sender->getInventory()->addItem($i);
                             return true;
