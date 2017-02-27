@@ -2,8 +2,6 @@
 namespace jasonwynn10;
 
 use pocketmine\item\Item;
-use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\nbt\tag\StringTag;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
@@ -20,14 +18,14 @@ class Main extends PluginBase {
             if($sender instanceof Player) {
                 if(count($args) >= 1) {
                     if($args[0] == $this->getConfig()->get("CodeName","Name")) {
-                        foreach ($this->getConfig()->get("Prizes",[]) as $item) {
+                        foreach ($this->getConfig()->get("Prizes",["276:0:1:Special Sword"]) as $item) {
                             $arr = explode(":", $item);
                             if(count($arr) <= 2){
                                 $this->getLogger()->debug("Invalid item in plugin config");
                                 continue;
                             }
                             $i = Item::get($arr[0],$arr[1],$arr[2]);
-                            if(count($arr) >= 4) {
+                            if(isset($arr[3])) {
                                 $i->setCustomName($arr[3]);
                             }
                             $sender->getInventory()->addItem($i);
