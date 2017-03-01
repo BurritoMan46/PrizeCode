@@ -2,7 +2,7 @@ name: PrizeCode
 author: "jasonwynn10"
 version: 0.1.0
 api:
-- 3.0.0-ALPHA3
+- 3.0.0-ALPHA4
 main: jasonwynn10\Main
 description: "A prize plugin"
 commands:
